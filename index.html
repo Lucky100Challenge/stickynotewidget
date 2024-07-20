@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Note Widget</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .note {
+        background-color: #fffae5;
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        min-height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        backdrop-filter: blur(10px);
+        cursor: move;
+      }
+      .delete-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #f56565;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        cursor: pointer;
+      }
+      body.light-mode .note {
+        background-color: rgba(255, 250, 229, 0.8);
+      }
+      body.dark-mode .note {
+        background-color: rgba(30, 30, 30, 0.8);
+        color: white;
+      }
+      body.dark-mode {
+        background-color: #1a202c;
+        color: white;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white flex flex-col items-center justify-center h-screen p-4 light-mode"
+  >
+    <div class="w-full max-w-lg">
+      <div class="mb-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Sticky Notes</h1>
+        <div class="flex items-center">
+          <button
+            id="toggleModeButton"
+            class="bg-gray-500 text-white py-1 px-3 rounded"
+          >
+            Toggle Mode
+          </button>
+          <button
+            id="addNoteButton"
+            class="ml-2 bg-blue-500 text-white py-1 px-3 rounded"
+          >
+            Add Note
+          </button>
+        </div>
+      </div>
+      <div id="notesContainer" class="relative w-full h-96"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
